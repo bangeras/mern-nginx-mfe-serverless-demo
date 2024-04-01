@@ -1,0 +1,47 @@
+
+const passport = require("passport");
+
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+const GOOGLE_CLIENT_ID = "23509002292-jffcbr090j7a3s6ffmcfk3u4845j5h24.apps.googleusercontent.com"
+const GOOGLE_CLIENT_SECRET = "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"
+
+// Step 1: Set up Passport with Google OAuth 2.0 Strategy
+passport.use(new GoogleStrategy(
+{
+    clientID: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: "/auth/google/callback",
+    passReqToCallback: true, // Pass the req object to the callback
+    // Add 'offline' scope to request a refresh token
+    scope: ['profile', 'email', 'offline']
+},
+function (req, accessToken, refreshToken, profile, done) {
+    console.log("Access token returned=", accessToken)
+    console.log("User profile returned=", profile._json)
+    console.log("Refresh token returned=", refreshToken)
+
+    // Access the response object (res) from req
+    const res = req.res;
+
+    // Save tokens to cookies
+    res.cookie('accessToken', accessToken, { httpOnly: true });
+    res.cookie('userProfile', profile._json, { httpOnly: false });
+    // res.cookie('refreshToken', refreshToken, { httpOnly: true });
+
+    done(null, profile);
+}
+));
+
+passport.serializeUser((user, done)=>{
+    // console.log("Serialized user=", user)
+    done(null, user);
+});
+    
+passport.deserializeUser((user, done)=>{
+    done(null, user);
+});
+
+module.exports = {
+    passport
+} 

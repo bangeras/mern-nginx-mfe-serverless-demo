@@ -1,0 +1,10 @@
+const config = require("config")
+const mongoose = require("mongoose")
+
+mongoose.connect(config.get("MONGO.SVBMERN.URL"))
+    .then(() => console.log("MongoDB connected.."))
+    .catch((err) => console.log("Mongo error=", err))
+
+module.exports = {
+    mongoose
+}

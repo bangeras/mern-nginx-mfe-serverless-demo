@@ -1,0 +1,21 @@
+service: mfe-apis
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-south-1
+
+functions:
+  sayHelloFn:
+    handler: node-http-api/hello.handler
+    events:
+      - httpApi:
+          path: /hello
+          method: GET
+  sayByeFn:
+    handler: node-http-api/bye.handler
+    events:
+      - httpApi:
+          path: /bye
+          method: GET

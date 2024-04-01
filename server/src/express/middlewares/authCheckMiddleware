@@ -1,0 +1,15 @@
+
+// Middleware to allow authenticated user to access protected resources. Inject this before a route-specific middleware
+
+const config = require('config')
+
+const authCheckMiddleware = (req, res, next) => {
+    console.log("authCheckMiddleware called..")
+    if (req.isAuthenticated()) { return next() }
+
+    res.redirect(config.get("CLIENT_SPA.URL"))
+};
+
+module.exports = {
+    authCheckMiddleware
+}

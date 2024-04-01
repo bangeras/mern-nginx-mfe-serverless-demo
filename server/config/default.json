@@ -1,0 +1,14 @@
+{
+  "EXPRESS": {
+    "PORT": 4000
+  },
+  "CLIENT_SPA": {
+    "URL": "http://localhost:3000"
+  },
+  "MONGO": {
+    "SVBMERN": {
+      "URL" : "mongodb://localhost:27017/svbmern"
+    }
+  }
+  
+}
