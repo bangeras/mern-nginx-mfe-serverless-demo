@@ -10,7 +10,7 @@
 
 ### Test the APIs locally
     $ serverless invoke local --function sayHelloFn
-    $ serverless invoke local --function sayHelloFn
+    $ serverless invoke local --function sayByeFn
 
 ## Configure AWS IAM user for serverless deploy
     Create a serverless_user using IAM console
@@ -19,7 +19,7 @@
     $ export AWS_ACCESS_KEY_ID=<enter access key here>
     $ export AWS_SECRET_ACCESS_KEY=<enter secret key here>
 
-    Grant required policies:
+Grant required policies:
 ![Permissions](permissions.png)
 
 ## Deploy to AWS
