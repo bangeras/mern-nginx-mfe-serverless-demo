@@ -1,5 +1,4 @@
 import React, {lazy, Suspense} from 'react'
-import {Link} from 'react-router-dom'
 
 const ComponentA = lazy(() => import("MFE1/ComponentA"));
 const ComponentB = lazy(() => import("MFE1/ComponentB"));
